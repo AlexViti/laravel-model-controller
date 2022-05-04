@@ -14,13 +14,17 @@
         @foreach ($movies as $movie)
             <div class="card">
                 <h2>{{ $movie->title }}</h2>
-                <h3>{{ $movie->original_title }}</h3>
-                <div>{{ $movie->nationality }}</div>
-                <div>{{ date("d/m/Y", strtotime($movie->date)) }}</div>
-                <div>
-                  @for ($i= 0; $i < floor($movie->vote); $i++)
-                    &#11088;
-                  @endfor
+                @if ($movie->title != $movie->original_title)
+                    <h3>Titolo originale: {{ $movie->original_title }}</h3>
+                @endif
+                <div class="info">
+                  <div>Produzione: {{ str_replace("british", "britannica", str_replace("american", "americana", $movie->nationality)) }}</div>
+                  <div>Data di uscita: {{ date("d/m/Y", strtotime($movie->date)) }}</div>
+                  <div class="rating">
+                    @for ($i= 0; $i < floor($movie->vote); $i++)
+                      &#11088;
+                    @endfor
+                  </div>
                 </div>
             </div>
         @endforeach

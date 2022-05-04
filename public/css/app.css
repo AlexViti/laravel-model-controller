@@ -1,22 +1,28 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Roboto", sans-serif;
+}
+
 body {
   padding: 2rem;
   background: #2c2c2c;
   color: #2c2c2c;
 }
 
-main {
+body main {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
   gap: 2rem;
 }
 
-@media (max-width: 600px) {
-  main {
-    grid-template-columns: 1fr;
-  }
-}
-
-main .card {
+body main .card {
+  text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -25,5 +31,45 @@ main .card {
   border-radius: 0.5rem;
   background-color: #f9f9f9;
   box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1);
+}
+
+body main .card h3 {
+  margin-bottom: 0.5rem 0;
+}
+
+body main .card .info > * {
+  margin-top: 0.5rem;
+}
+
+body main .card:nth-last-child(2),
+body main .card:last-child {
+  display: none;
+}
+
+@media (max-width: 1200px) {
+  body main {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  body main .card:nth-last-child(2) {
+    display: block;
+  }
+}
+
+@media (max-width: 900px) {
+  body main {
+    grid-template-columns: repeat(2, 1fr);
+    font-size: 0.9em;
+  }
+
+  body main .card:last-child {
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  body main {
+    grid-template-columns: 1fr;
+  }
 }
 
